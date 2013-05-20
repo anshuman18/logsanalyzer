@@ -39,8 +39,8 @@ def match(line, ptrns):
 
 def appendChunks(chnks,matchLines):
     if(len(matchLines)==0):
-        return 
-       
+        return
+
     chnk = chunk(matchLines)
     if (chnk in chnks):
        chnks[chnk]+=1
@@ -56,7 +56,7 @@ def processBuffer(buff, offset, chnks, matchLines):
                 offset = 0
                 if (match(line,startptrns) == 1):
                     matchLines.append(line)
-                    offset=1                
+                    offset=1
             else:
                 matchLines.append(line)
         else:
@@ -106,7 +106,7 @@ def dumpChnks(chnks, outFldr, lgFile):
     outFile = outFldr + lgFile[i:] + ".xml"
     sorteddict_byValue = [x for x in chnks.items()]
     sorteddict_byValue.sort(key=lambda x: x[1]) # sort by value
-    sorteddict_byValue.reverse()    
+    sorteddict_byValue.reverse()
     fw = open (outFile,"w")
     try:
         for cn in sorteddict_byValue:
@@ -143,4 +143,4 @@ endptrns = ["INFO","SEVERE","WARNING", "ERROR", "FATAL"]
 lgConfFile = sys.argv[1]
 outFldr = sys.argv[2]
 process(lgConfFile, outFldr)
-print ("done!")
+print ("done!")    
